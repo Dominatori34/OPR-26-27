@@ -1,3 +1,4 @@
+"""
 #slovarji
 
 slovar = {"ključ" : "vrednost",
@@ -22,5 +23,28 @@ import requests
 base_url = "https://api.open-meteo.com/v1/forecast?latitude=44.5384&longitude=18.6671&daily=rain_sum&forecast_days=1"
 
 call = requests.get(base_url).json()
+"""
 
-print(call["daily"])["rain_sum"][0]
+#vaja
+import requests
+base_url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m"
+
+call = requests.get(base_url).json()
+print(call["current"]["temperature_2m"])
+
+base_url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m"
+call = requests.get(base_url).json()
+print(call["hourly"]["temperature_2m"])
+
+base_url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min"
+call = requests.get(base_url).json()
+print(max(call["daily"]["temperature_2m_max"]))
+print(min(call["daily"]["temperature_2m_min"]))
+
+base_url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min"
+call = requests.get(base_url).json()
+print(max(call["daily"]["temperature_2m_max"]) - min(call["daily"]["temperature_2m_min"]))
+
+
+
+
